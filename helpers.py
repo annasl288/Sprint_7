@@ -62,7 +62,7 @@ class Courier:
     @staticmethod
     def create_new_courier_and_get_courier_data():
         data = CreateCourierData.generate_valid_data_to_create_courier()
-        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.create_courier}', data=data)
+        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.courier}', data=data)
         return {"response_text": response.text, "status_code": response.status_code, "data": data}
 
     # Логин в системе с возвратом кода ответа и id курьера
@@ -70,3 +70,9 @@ class Courier:
     def courier_login_and_get_id(data):
         response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.courier_login}', data=data)
         return {"id": str(response.json()["id"]), "response_text": response.text, "status_code": response.status_code}
+
+    # Удаление курьера
+    @staticmethod
+    def courier_deletion(courier_id):
+        response = requests.delete(f'{Urls.SCOOTER_URL}{Endpoints.courier}{courier_id}')
+        return {"response_text": response.text, "status_code": response.status_code}

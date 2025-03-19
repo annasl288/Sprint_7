@@ -17,7 +17,7 @@ class TestCreateCourier:
     @allure.title('Ошибка при создании двух одинаковых курьеров')
     def test_repeat_registration_failed(self, courier):
 
-        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.create_courier}', data=courier["data"])
+        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.courier}', data=courier["data"])
 
         assert response.status_code == 409 and ResponseText.ALREADY_USED in response.text
 
@@ -26,6 +26,6 @@ class TestCreateCourier:
                                            DataCourier.invalid_data_without_password))
     def test_courier_registration_without_parameters_failed(self, courier_data):
 
-        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.create_courier}', data=courier_data)
+        response = requests.post(f'{Urls.SCOOTER_URL}{Endpoints.courier}', data=courier_data)
 
         assert response.status_code == 400 and ResponseText.NOT_ENOUGH_DATA_CREATE in response.text

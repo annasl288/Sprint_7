@@ -3,7 +3,6 @@ class Urls:
 
 
 class Endpoints:
-    create_courier = "/api/v1/courier"  # Создание курьера
-    courier_login = "/api/v1/courier/login"  # Логин курьера в системе
-    create_order = "/api/v1/orders"  # Создание заказа
-    get_orders_list = '/api/v1/orders'  # Получение списка заказов
+    courier = "/api/v1/courier"  # Создание/удаление курьера
+    courier_login = f'{courier}/login'  # Логин курьера в системе
+    create_order = "/api/v1/orders"  # Создание заказа / Получение списка заказов
