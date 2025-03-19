@@ -3,7 +3,7 @@ import pytest
 from helpers import Courier
 
 
-# Регистрация и авторизация курьера
+# Регистрация, авторизация и удаление курьера
 @pytest.fixture()
 def courier():
     create_courier = Courier.create_new_courier_and_get_courier_data()
